@@ -9,7 +9,16 @@ const port = process.env.PORT
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(
+    cors({
+      origin: ["https://zingy-heliotrope-c26a4b.netlify.app"],
+      methods: ["GET", "POST", "DELETE"],
+      credentials: true,
+      origin: true,
+    })
+  );
+
 app.use(routes);
 
 mongoose.connect(process.env.CONNECTION_URI,{
@@ -25,5 +34,5 @@ mongoose.connect(process.env.CONNECTION_URI,{
 
 
 app.listen(port, function () {
-    console.log(`server started at port ${PORT}`);
+    console.log(`server started at port ${port}`);
 })
