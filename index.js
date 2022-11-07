@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const routes = require("./Routes/routes");
 require('dotenv').config();
+const port = process.env.PORT
 
 const app = express();
 
@@ -23,6 +24,6 @@ mongoose.connect(process.env.CONNECTION_URI,{
 
 
 
-app.listen(5000, function () {
-    console.log("server started at port 5000");
+app.listen(port, function () {
+    console.log(`server started at port ${PORT}`);
 })
