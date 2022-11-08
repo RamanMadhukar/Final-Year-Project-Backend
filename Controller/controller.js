@@ -9,7 +9,7 @@ exports.postPatient = (req, res) => {
         if (err) {
             console.log('error', err);
             return res.status(400).json({
-                error: 'Error saving employee in database. Try again'
+                err
             });
         }
         return res.json({
