@@ -10,20 +10,27 @@ const app = express();
 
 app.use(express.json());
 
-app.use(
-    cors({
-        origin: ["https://zingy-heliotrope-c26a4b.netlify.app"],
-        methods: ["GET", "POST", "DELETE"],
-        credentials: true,
-        origin: true,
-    })
-);
+// app.use(
+//     cors({
+//         origin: ["https://zingy-heliotrope-c26a4b.netlify.app"],
+//         methods: ["GET", "POST", "DELETE"],
+//         credentials: true,
+//         origin: true,
+//     })
+// );
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
+  }
+  app.use(cors(corsOptions))
+
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 app.use(routes);
 
