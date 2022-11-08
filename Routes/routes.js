@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postPatient, getPatient } = require("../Controller/controller");
+// const { postPatient, getPatient } = require("../Controller/controller");
 
 
 

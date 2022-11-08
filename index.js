@@ -2,37 +2,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
-const routes = require("./Routes/routes");
+// const routes = require("./Routes/routes");
 require('dotenv').config();
+
+const { postPatient, getPatient } = require("./Controller/controller");
+
 const port = process.env.PORT
 
 const app = express();
 
 app.use(express.json());
 
-// app.use(
-//     cors({
-//         origin: ["https://zingy-heliotrope-c26a4b.netlify.app"],
-//         methods: ["GET", "POST", "DELETE"],
-//         credentials: true,
-//         origin: true,
-//     })
-// );
+app.use(cors());
 
-// const corsOptions = {
-//     origin: '*',
-//     credentials: true,
-//     optionSuccessStatus: 200
-//   }
-  app.use(cors())
-
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-
-app.use(routes);
+app.post("/patient", postPatient);
+app.get("/patient", getPatient);
+app.get('/', (req, res) => {
+    res.send('hello world');
+});
 
 mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
