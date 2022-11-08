@@ -6,6 +6,9 @@ const { postPatient, getPatient } = require("../Controller/controller");
 
 router.post("/patient", postPatient);
 router.get("/patient", getPatient);
+router.get('/', (req, res)=>{
+    res.send('hello world');
+});
 
 
 
