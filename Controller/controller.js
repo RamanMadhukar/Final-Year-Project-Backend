@@ -21,8 +21,11 @@ exports.postPatient = (req, res) => {
 
 exports.getPatient = (req, res) => {
 
-    querySchema.find(function (err, found) {
-        return res.json(found);
-    });
+    // querySchema.find(function (err, found) {
+    //     return res.json(found);
+    // });
+
+        return res.send("found");
+
 
 }
