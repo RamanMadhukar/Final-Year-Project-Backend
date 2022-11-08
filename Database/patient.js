@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const querySchema = mongoose.Schema(
+const querySchema = new mongoose.Schema(
     {
         name:{type:String},
         age:{type:Number},
