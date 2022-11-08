@@ -2,11 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
-// const routes = require("./Routes/routes");
+const routes = require("./Routes/routes");
 require('dotenv').config();
-
-const { postPatient, getPatient } = require("./Controller/controller");
-
 const port = process.env.PORT
 
 const app = express();
@@ -15,11 +12,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.post("/patient", postPatient);
-app.get("/patient", getPatient);
-app.get('/', (req, res) => {
-    res.send('hello world');
-});
+app.use(routes);
 
 mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
