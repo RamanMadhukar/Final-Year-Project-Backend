@@ -16,7 +16,6 @@ exports.postPatient = (req, res) => {
             message: 'data saved'
         });
     });
-    return res.send("post triggred");
 }
 
 exports.getPatient = (req, res) => {
@@ -31,7 +30,6 @@ exports.getPatient = (req, res) => {
         }
     });
 
-        // return res.send("found");
 
 
 }
