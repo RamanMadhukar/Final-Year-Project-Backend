@@ -1,4 +1,6 @@
 const querySchema = require('../Database/patient')
+const myDataP = require('../Database/myData');
+const disease = require('../Database/disease');
 
 exports.postPatient = (req, res) => {
     const { name, age, disease } = req.body.patient;
@@ -18,18 +20,32 @@ exports.postPatient = (req, res) => {
     });
 }
 
-exports.getPatient = (req, res) => {
+exports.getPatient = async (req, res) => {
 
-    querySchema.find(function (err, found) {
-        if(found){
-            return res.json(found);
+    // const data = [];
 
-        }
-        else{
-            return res.send(err);
-        }
-    });
+    // myDataP.find(function (err, found) {
+    //     if(found){
+    //         found.map(e=> {
+    //             const {lat,lng}=e;
+    //             data.push({lat,lng})
+    //         })
+    //         return res.json(data);
 
+    //     }
+    //     else{
+    //         return res.send(err);
+    //     }
+    // });
 
+    // var data = await myDataP.find({
+    //     lat: { $gt: '8.06666', $lt: '37.1' },
+    //     lng: { $gt: '68.55', $lt: '97.28' }
+    // });
+    // // res.json(data);
+    // console.log(data);
+    var data = await disease.find();
+
+    return res.json(data);
 
 }
